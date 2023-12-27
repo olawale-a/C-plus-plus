@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    float num1, num2, result;
+    char operation;
+
+    // User input for two numbers
+    cout << "Enter first number: ";
+    while (!(cin >> num1)) {
+        cout << "Invalid input. Please enter a numeric value: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    cout << "Enter second number: ";
+    while (!(cin >> num2)) {
+        cout << "Invalid input. Please enter a numeric value: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    // Menu-driven interface to select the operation
+    cout << "Choose operation (+, -, *, /): ";
+    cin >> operation;
+
+    // Perform the chosen operation
+    switch (operation) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2 != 0) {
+                result = num1 / num2;
+            } else {
+                cout << "Error: Division by zero!" << endl;
+                return 1; // Exit with an error code
+            }
+            break;
+        default:
+            cout << "Invalid operation selected!" << endl;
+            return 1; // Exit with an error code
+    }
+
+    // Display the result of the chosen operation
+    cout << "Result: " << result << endl;
+
+    return 0; // Exit successfully
+}
